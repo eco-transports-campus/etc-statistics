@@ -17,8 +17,8 @@ var initStatistics = function(liste) {
 	});
 }
 
-var round = function(number) {
-  var factor = Math.pow(10, 2);
+var round = function(number, precision) {
+  var factor = Math.pow(10, precision);
   return Math.round(number * factor) / factor;
 }
 
@@ -71,9 +71,38 @@ var calculTauxCovoiturage = function() {
 	return calculNbTrajetCovoiturage() / calculNbTrajet() * 100;
 }
 
+var getCo2Economise = function() {
+	return calculCo2Economise();
+}
+
+var getCo2Economise = function() {
+	return calculCo2Economise();
+}
+
+var calculCo2Economise = function() {
+	return calculCo2Total() - calculCo2Consomme();
+}
+
+var calculCo2Total = function() {
+	var co2Total = 0;
+	statisticsList.forEach(function(statistic) {
+		co2Total += statistic.nb_personnes * statistic.co2;
+	});
+	return co2Total;
+}
+
+var calculCo2Consomme = function() {
+	var co2Consomme = 0;
+	statisticsList.forEach(function(statistic) {
+		co2Consomme += statistic.co2;
+	});
+	return co2Consomme;
+}
+
 exports.round = round;
 exports.initStatistics = initStatistics;
+exports.displayTrajetsEffectues = displayTrajetsEffectues;
 exports.getTauxRemplissage = getTauxRemplissage;
 exports.getNbTrajet = getNbTrajet;
 exports.getTauxCovoiturage = getTauxCovoiturage;
-exports.displayTrajetsEffectues = displayTrajetsEffectues;
+exports.getCo2Economise = getCo2Economise;

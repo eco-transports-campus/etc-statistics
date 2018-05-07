@@ -18,9 +18,11 @@ if(nbTrajet == 0) {
 	}
 
 	var tauxRemplissage = statistics.getTauxRemplissage();
-	console.log("Le taux de remplissage des voitures est de " + statistics.round(tauxRemplissage) + "%.");
+	console.log("Le taux de remplissage des voitures est de " + statistics.round(tauxRemplissage, 2) + "%.");
 
 	var tauxCovoiturage = statistics.getTauxCovoiturage();
-	console.log("Le taux de covoiturage parmi tout les trajets effectués est de " + statistics.round(tauxCovoiturage) + "%.");
+	console.log("Le taux de covoiturage parmi tout les trajets effectués est de " + statistics.round(tauxCovoiturage, 2) + "%.");
 
+	var co2Economise = statistics.getCo2Economise();
+	console.log("Le covoiturage a permis d'économiser " + co2Economise + " kg eq. CO₂.");
 }
