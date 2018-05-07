@@ -13,8 +13,18 @@ var initStatistics = function(liste) {
 		var nb_places = statisticElement[5];
 		var duree = statisticElement[6];
 		var statistic = new Statistic(ville_depart, ville_arrivee, distance, co2, nb_personnes, nb_places, duree);
-	  	console.log(statisticElement);
     	statisticsList.push(statistic);
+	});
+}
+
+var round = function(number) {
+  var factor = Math.pow(10, 2);
+  return Math.round(number * factor) / factor;
+}
+
+var displayTrajetsEffectues = function() {	
+	statisticsList.forEach(function(statistic) {
+	  	console.log(statistic);		
 	});
 }
 
@@ -43,6 +53,27 @@ var calculNbTrajet = function() {
 	return nb;
 }
 
+var getTauxCovoiturage = function() {
+	return calculTauxCovoiturage();
+}
+
+var calculNbTrajetCovoiturage = function() {
+	var nb = 0;
+	statisticsList.forEach(function(statistic) {
+		if(statistic.nb_personnes > 1) {
+			nb += 1;
+		}
+	});
+	return nb;
+}
+
+var calculTauxCovoiturage = function() {
+	return calculNbTrajetCovoiturage() / calculNbTrajet() * 100;
+}
+
+exports.round = round;
 exports.initStatistics = initStatistics;
 exports.getTauxRemplissage = getTauxRemplissage;
 exports.getNbTrajet = getNbTrajet;
+exports.getTauxCovoiturage = getTauxCovoiturage;
+exports.displayTrajetsEffectues = displayTrajetsEffectues;
