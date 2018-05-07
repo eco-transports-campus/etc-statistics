@@ -8,11 +8,11 @@ Un module qui calcule des statistiques pour des trajets effectués.
 
 * {ville_depart, ville_arrivee, distance, co2, nb_personnes, nb_places, duree}
 
-Structure de l’objet Statistique.;
+Structure de l’objet Statistique.
 
 #### Exemple d’utilisation :
 ```javascript
-var list = [['Ormes', 'Orsay', 104, 68, 3, 5, 75], ['Bures sur Yvette', 'Orsay', 4, 2, 1, 5, 10], ['Ormes', 'Orléans', 9, 6, 2, 5, 25]];
+var list = [['Ormes', 'Orsay', 104, 68, 3, 5, 75], ['Bures sur Yvette', 'Orsay', 4, 2, 1, 5, 10]];
 ```
 
 * initStatistics(list)
@@ -24,40 +24,60 @@ Méthode qui permet d’initialiser la liste des trajets effectués pour pouvoir
 statistics.initStatistics(list);
 ```
 
-displayTrajetsEffectues()
+* displayTrajetsEffectues()
+
 Méthode qui permet d’afficher la liste des trajets effectués.
 
 #### Exemple d’utilisation :
+```javascript
 statistics.displayTrajetsEffectues();
+```
 
-round(valeur, precison)
+* round(valeur, precison)
+
 valeur : valeur à afficher
+
 precision : nombre de décimal
+
 Méthode qui permet d’afficher le nombre (valeur) avec une précision (precision).
 
-### Exemple d’utilisation :
+#### Exemple d’utilisation :
+```javascript
 statistics.displayTrajetsEffectues();
+```
 
-getNbTrajet()
+* getNbTrajet()
+
 Méthode qui permet de récupérer le nombre de trajet effectué.
 
-### Exemple d’utilisation :
+#### Exemple d’utilisation :
+```javascript
 var nbTrajet = statistics.getNbTrajet();
+```
 
-getTauxRemplissage()
+* getTauxRemplissage()
+
 Méthode qui permet de calculer le taux de remplissage des voitures.
 
-### Exemple d’utilisation :
+#### Exemple d’utilisation :
+```javascript
 var tauxRemplissage = statistics.getTauxRemplissage();
+```
 
-getTauxCovoiturage()
+* getTauxCovoiturage()
+
 Méthode qui permet de calculer le taux de covoiturage effectués. C’est à dire les trajets où le nombre de personne est strictement supérieur à 1.
 
-### Exemple d’utilisation :
+#### Exemple d’utilisation :
+```javascript
 var tauxCovoiturage = statistics.getTauxCovoiturage();
+```
 
-getCo2Economise();
+* getCo2Economise();
+
 Méthode qui permet de calculer l’impact sur l’empreinte écologique en kg eq. CO₂ économisé.
 
-### Exemple d’utilisation :
+#### Exemple d’utilisation :
+```javascript
 var co2Economise = statistics.getCo2Economise();
+```
