@@ -6,15 +6,20 @@ Un module qui calcule des statistiques pour des trajets effectués.
 
 ## Documentation
 
-{ville_depart, ville_arrivee, distance, co2, nb_personnes, nb_places, duree}
-Structure de l’objet Statistique.
-### Exemple d’utilisation :
+* {ville_depart, ville_arrivee, distance, co2, nb_personnes, nb_places, duree}
+
+Structure de l’objet Statistique.;
+
+#### Exemple d’utilisation :
+```javascript
 var list = [['Ormes', 'Orsay', 104, 68, 3, 5, 75], ['Bures sur Yvette', 'Orsay', 4, 2, 1, 5, 10], ['Ormes', 'Orléans', 9, 6, 2, 5, 25]];
+```
 
-initStatistics(list)
-Méthode qui permet d’initialiser la liste des trajets effectués pour pouvoir calculer les statistiques par la suite.
+* initStatistics(list)
 
-### Exemple d’utilisation :
+Méthode qui permet d’initialiser la liste des trajets effectués pour pouvoir calculer les statistiques par la suite.;
+
+#### Exemple d’utilisation :
 ```javascript
 statistics.initStatistics(list);
 ```
@@ -22,7 +27,7 @@ statistics.initStatistics(list);
 displayTrajetsEffectues()
 Méthode qui permet d’afficher la liste des trajets effectués.
 
-### Exemple d’utilisation :
+#### Exemple d’utilisation :
 statistics.displayTrajetsEffectues();
 
 round(valeur, precison)
