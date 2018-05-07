@@ -1,7 +1,7 @@
 
 ![Polytech Paris-sud](https://www.usinenouvelle.com/mediatheque/3/4/0/000268043_image_260x175.jpg)
 # etc-statistics
-Un module qui calcule des statistiques pour des trajets effectués.
+Un module qui calcule des statistiques pour des trajets effectués. Le fichier test_statistics.js montre comment utiliser le module.
 
 
 ## Documentation
