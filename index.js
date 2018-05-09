@@ -2,6 +2,8 @@ var Statistic = require("./statistic.js");
  
 var statisticsList = [];
 
+var map = {};
+
 var initStatistics = function(liste) {
 
 	liste.forEach(function(statisticElement) {
@@ -28,7 +30,6 @@ var displayTrajetsEffectues = function() {
 	});
 }
 
- 
 var getTauxRemplissage = function() {
     return calculTauxRemplissage();
 }
@@ -75,10 +76,6 @@ var getCo2Economise = function() {
 	return calculCo2Economise();
 }
 
-var getCo2Economise = function() {
-	return calculCo2Economise();
-}
-
 var calculCo2Economise = function() {
 	return calculCo2Total() - calculCo2Consomme();
 }
@@ -99,6 +96,59 @@ var calculCo2Consomme = function() {
 	return co2Consomme;
 }
 
+var getDistanceTotalParcourue = function(){
+	var dis = 0;
+	statisticsList.forEach(function (statistic) {
+		dis += statistic.distance;
+	});
+	return dis;
+}
+
+var getDistanceMoyenneDesTrajets = function(){
+	return getDistanceTotalParcourue()/getNbTrajet();
+}
+
+var getDureeTotaleDesTrajets = function(){
+	var time = 0;
+	statisticsList.forEach(function (statistic) {
+		time += statistic.duree;
+	});
+	return time;
+}
+
+var getDureeMoyenDesTrajets = function(){
+	var dureeMoy = getDureeTotaleDesTrajets()/getNbTrajet();
+	var sec = Math.trunc((dureeMoy % 1) * 60);
+	var min = Math.trunc(dureeMoy%60);
+	var hour = Math.trunc(dureeMoy/60);
+
+	var s = hour+" heures "+ min+" minutes "+sec+" secondes.";
+	return s;
+}
+
+var getLaVilleLaPlusActive = function(){
+	statisticsList.forEach(function(statistic){
+		if(statistic.ville_arrivee in map ){
+			map[statistic.ville_arrivee] += 1;
+		} else {
+			map[statistic.ville_arrivee] = 1;
+		}
+
+		if(statistic.ville_depart in map ){
+			map[statistic.ville_depart] += 1;
+		} else {
+			map[statistic.ville_depart] = 1;
+		}
+	}); 
+
+	return Object.keys(map).reduce(function(a, b){ return map[a] > map[b] ? a : b });
+}
+
+exports.getLaVilleLaPlusActive = getLaVilleLaPlusActive;
+exports.getDureeTotaleDesTrajets = getDureeTotaleDesTrajets;
+exports.getDureeMoyenDesTrajets = getDureeMoyenDesTrajets;
+exports.getDistanceTotalParcourue = getDistanceTotalParcourue;
+exports.getDistanceMoyenneDesTrajets = getDistanceMoyenneDesTrajets;
 exports.round = round;
 exports.initStatistics = initStatistics;
 exports.displayTrajetsEffectues = displayTrajetsEffectues;
