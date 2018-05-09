@@ -4,6 +4,8 @@ var statisticsList = [];
 
 var map = {};
 
+var trajet = {};
+
 var initStatistics = function(liste) {
 
 	liste.forEach(function(statisticElement) {
@@ -144,6 +146,20 @@ var getLaVilleLaPlusActive = function(){
 	return Object.keys(map).reduce(function(a, b){ return map[a] > map[b] ? a : b });
 }
 
+var getTrajetPlusFrequent = function(){
+	statisticsList.forEach(function(statistic){
+		var oneWay = statistic.ville_depart+" - "+statistic.ville_arrivee;
+		if(oneWay in trajet ){
+			trajet[oneWay] += 1;
+		} else {
+			trajet[oneWay] = 1;
+		}
+	}); 
+
+	return Object.keys(trajet).reduce(function(a, b){ return trajet[a] > trajet[b] ? a : b });
+}
+
+exports.getTrajetPlusFrequent = getTrajetPlusFrequent;
 exports.getLaVilleLaPlusActive = getLaVilleLaPlusActive;
 exports.getDureeTotaleDesTrajets = getDureeTotaleDesTrajets;
 exports.getDureeMoyenDesTrajets = getDureeMoyenDesTrajets;

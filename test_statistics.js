@@ -1,6 +1,6 @@
 var statistics = require('./index.js');
 
-var list = [['Ormes', 'Orsay', 104, 68, 3, 5, 75], ['Bures sur Yvette', 'Ormes', 4, 2, 1, 5, 10], ['Ormes', 'Orléans', 9, 6, 2, 5, 25]];
+var list = [['Ormes', 'Orsay', 104, 68, 3, 5, 75],['Ormes', 'Orsay', 104, 68, 3, 5, 75], ['Bures sur Yvette', 'Ormes', 4, 2, 1, 5, 10], ['Ormes', 'Orléans', 9, 6, 2, 5, 25]];
 
 statistics.initStatistics(list);
 
@@ -34,4 +34,7 @@ if(nbTrajet == 0) {
 
 	var distanceMoyenne = statistics.getDistanceMoyenneDesTrajets();
 	console.log("La distance moyenne des trajets effectués sur notre application est : "+distanceMoyenne+" Km.");
+
+	var trajetFrequent = statistics.getTrajetPlusFrequent();
+	console.log("le trajet le plus fréquent est : "+trajetFrequent+".");
 }
